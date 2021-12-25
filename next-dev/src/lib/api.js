@@ -1,0 +1,33 @@
+import {gql, GraphQLClient} from 'graphql-request';
+
+const datoToken = process.env.DATOCMS_TOKEN
+const datoEndpoint = process.env.DATOCMS_ENDPOINT
+
+//get data from learning resources 
+export const getLearningResources = async () => {
+    const res = new GraphQLClient(datoEndpoint, {
+        headers: {
+            Authorization: datoToken
+        }
+    })
+
+    const query = gql`
+        {
+            allLearningResources {
+                id
+                title
+                slug
+                topicArea
+                description
+                gradeLevel
+                language
+                leader
+                _status
+                _createdAt
+              }
+        }
+    `
+
+    const resJson = await res.request(query);
+    return resJson.allLearningResources;
+}

@@ -1,6 +1,5 @@
 import React , {Fragment} from 'react'
 import Head from 'next/head'
-import Image from 'next/image'
 import {Box, Container,Text, Grid, GridItem } from '@chakra-ui/react';
 import { getLearningResources } from '../src/lib/api'
 

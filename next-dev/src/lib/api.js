@@ -89,3 +89,58 @@ export const getExhibition = async() => {
     const resJson = await res.request(query);
     return resJson.exhibition;
 }
+
+export const getPressReleases = async() => {
+    const res = new GraphQLClient(datoEndpoint, {
+        headers: {
+            Authorization: datoToken
+        }
+    })
+
+    const query = gql`
+        {
+            allPressReleases {
+                title
+                author
+                date
+                slug
+                subtitle
+                pressReleaseType
+            }
+        }
+    `
+    const resJson = await res.request(query)
+    return resJson.allPressReleases;
+}
+
+export const getPeople = async() => {
+    const res = new GraphQLClient(datoEndpoint,
+        {
+            headers: {
+                Authorization: datoToken
+            }
+        }
+    )
+
+    const query = gql`
+    {
+        allPeople {
+          id
+          firstName
+          lastName
+          jobTitle
+          email
+          slug
+          shortBio
+          headerImage {
+            url
+            title
+            alt
+            author
+          }
+        }
+      }
+    `
+    const resJson = res.request(query)
+    return resJson.allPeople;
+}

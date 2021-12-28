@@ -4,7 +4,6 @@ import {Box, Grid, Container, GridItem, Text} from '@chakra-ui/react'
 import { getExhibition } from "../src/lib/api";
 
 export default function Exhibit({exhibit}){
-    console.log(exhibit)
     return(
         <Fragment>
             <Head>
